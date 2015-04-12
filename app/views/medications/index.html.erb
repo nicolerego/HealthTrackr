@@ -1,0 +1,17 @@
+<h1>Your medications</h1>
+
+<%= link_to 'Add a medication', new_medication_path %>
+<ul>
+    <% @medications.each do |medication| %>
+  <p>
+  Name: <%= medication.name %></br>
+  Amount: <%= medication.amount %></br>
+  Started On: <%= medication.started_at.strftime('%b %d, %Y') %></br>
+  <% if medication.ended_at != nil %>
+    Ended On: <%= medication.ended_at.strftime('%b %d, %Y') %></br>
+    <% end %>
+    <%= link_to 'Update', edit_medication_path(medication.id) %> |
+    <%= link_to 'Delete', medication, method: :delete, data: {confirm: "Are you sure you want to delete this medication?"}  %>
+  </p>
+    <% end %>
+  </ul>

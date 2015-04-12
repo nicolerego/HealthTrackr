@@ -1,0 +1,14 @@
+<h1>All Appointments</h1>
+
+<%= link_to 'Add an Appointment', new_appointment_path %>
+<ul>
+    <% @appointments.each do |appointment| %>
+  <p>
+  Appointment on <%= appointment.date.strftime('%b %d, %Y') %>
+  at <%= appointment.time.strftime('%I:%M:%S %p') %>
+  with <%= appointment.doctor.name %> at <%= appointment.doctor.address %></br>
+    <%= link_to 'Update', edit_appointment_path(appointment.id) %> |
+    <%= link_to 'Delete', appointment, method: :delete, data: {confirm: "Are you sure you want to delete this appointment?"}  %>
+  </p>
+    <% end %>
+  </ul>
