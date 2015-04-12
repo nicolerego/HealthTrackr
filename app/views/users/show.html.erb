@@ -1,7 +1,7 @@
 <h1>Hi <%= current_user.first_name %></h1>
 
 <h3>Summary</h3>
-<p>This will show last appt with GI, next appt</p>
+<p>Your last appointment was on <%= @recent[0] %>.</br>You're next appointment is <%= @next[0] %>. </p>
 
 <h3>Medications</h3>
 <p>Your Current Medications</p>
@@ -22,7 +22,7 @@
 <!-- <p>Doctors names should be clickable - link to doctor#show,</br>will list all appointments belonging to this doctor here, along with notes associated with each appointment</p> -->
 <ul>
     <% @appointments.each do |appointment| %>
-    <% if appointment.date < Date.today + 3.months %>
+    <% if (appointment.date < Date.today + 3.months) && (appointment.date > Date.today) %>
         <p>
         Appointment on <%= appointment.date.strftime('%b %d, %Y') %>
         at <%= appointment.time.strftime('%I:%M:%S %p') %>

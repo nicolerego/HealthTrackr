@@ -10,6 +10,9 @@ class UsersController < ApplicationController
      @medications = current_user.medications
      @doctors = current_user.doctors
      @appointments = current_user.appointments
+
+     @recent = Appointment.most_recent.map {|appt| appt.date.strftime('%b %d, %Y')}
+     @next = Appointment.next_appt.map {|appt| appt.date.strftime('%b %d, %Y')}
   end
 
   def new
