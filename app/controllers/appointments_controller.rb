@@ -36,7 +36,6 @@ class AppointmentsController < ApplicationController
     else
       render :edit
     end 
-    
   end
 
   def destroy
@@ -45,9 +44,13 @@ class AppointmentsController < ApplicationController
     redirect_to appointment_path
   end
 
+  def history 
+    @doctors = current_user.doctors
+    @appointments = current_user.appointments
+  end 
+
   private
   def appointment_params
     params.require(:appointment).permit(:date, :time, :note, :doctor_id, :id)
   end 
-
 end

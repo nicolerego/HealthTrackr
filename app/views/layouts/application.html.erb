@@ -10,9 +10,9 @@
   <h1>HealthTrackr</h1>
   <div id="nav">
     <% if current_user %>
-     <!--  <%= link_to "Edit Profile", edit_user_path(current_user.id) %> -->
-      <%= link_to 'Your Profile', :profile %> 
-      <%= link_to 'Your Medications', medications_path %>
+      <%= link_to 'Your Profile', :profile %> |
+      <%= link_to 'Your Medications', medications_path %> |
+      <%= link_to 'All Appointments', appointments_path %> |
       <%= link_to "Logout", :logout, method: :post %>
 
     <% else %>

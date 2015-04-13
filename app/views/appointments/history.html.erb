@@ -1,0 +1,13 @@
+<h1>Appointment History</h1>
+<p>can print to pdf?</p>
+
+<ul>
+    <% @appointments.each do |appointment| %>
+      <p>
+      Appointment on <%= appointment.date.strftime('%b %d, %Y') %>
+      with <%= appointment.doctor.name %></br>
+        <% if appointment.note != "" %>
+           Notes: <%= appointment.note %> </br>
+        <% end %>
+    <% end %>
+</ul>

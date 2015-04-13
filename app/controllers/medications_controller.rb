@@ -1,7 +1,6 @@
 class MedicationsController < ApplicationController
  def index
     @medications = current_user.medications
-    # @medication = Medication.find(params[:id])
   end
 
   def show
@@ -34,7 +33,6 @@ class MedicationsController < ApplicationController
     else
       render :edit
     end 
-    
   end
 
   def destroy
@@ -47,5 +45,4 @@ class MedicationsController < ApplicationController
   def medication_params
     params.require(:medication).permit(:name, :amount, :started_at, :ended_at, :id)
   end 
-
 end

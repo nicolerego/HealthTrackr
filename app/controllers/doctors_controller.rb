@@ -4,7 +4,9 @@ class DoctorsController < ApplicationController
   end
 
   def show
-    @doctor = current_user.doctors
+    # @doctor = current_user.doctors
+    @doctor = Doctor.find(params[:id])
+    @appointments = current_user.appointments
   end
 
   def new
@@ -33,7 +35,6 @@ class DoctorsController < ApplicationController
     else
       render :edit
     end 
-    
   end
 
   def destroy
@@ -46,5 +47,4 @@ class DoctorsController < ApplicationController
   def doctor_params
     params.require(:doctor).permit(:name, :title, :phone, :alt_phone, :address, :id)
   end 
-
 end

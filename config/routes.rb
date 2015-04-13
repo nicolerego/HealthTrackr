@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :doctors
   resources :appointments
 
+get 'history' => 'appointments#history', :as => :history
 get 'profile' => 'users#show', :as => :profile
 
 get 'register' => 'users#new', :as => :register

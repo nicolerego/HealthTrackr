@@ -1,0 +1,21 @@
+<h1><%= @doctor.name %></h1>
+<h3>Info:</h3>
+<%= @doctor.phone %></br>
+<%= @doctor.address %></br>
+
+<h3>Appointments with <%= @doctor.name %></h3>
+<ul>
+  <% @appointments.each do |appointment| %>
+    <% if appointment.doctor.name ==  @doctor.name %>
+      <p>
+        Appointment on <%= appointment.date.strftime('%b %d, %Y') %>
+        at <%= appointment.time.strftime('%I:%M:%S %p') %></br>
+       <!--  with <%= appointment.doctor.name %></br> -->
+        <% if appointment.note != "" %>
+          Notes: <%= appointment.note %> </br>
+          <% end %>
+          <%= link_to 'Update', edit_appointment_path(appointment.id) %>
+      </p>
+    <% end %>
+  <% end %>
+</ul>
